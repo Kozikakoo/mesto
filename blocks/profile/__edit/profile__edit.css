@@ -5,13 +5,23 @@
     box-sizing: border-box;
     width: 24px;
     height: 24px;
-    margin-left: 25px;
-    margin-bottom: 24px;
+    margin-left: 23px;
+    margin-bottom: 15px;
     align-self: flex-end;
     transition: opacity  0.1s linear 0.1s;
+    padding: 0;
 }
 
 .profile__edit:hover {
     opacity: 0.6;
 }
 
+@media screen and (max-width: 767px) {
+    .profile__edit {
+       margin-left: 14px;
+       margin-bottom: 14px;
+       align-self: center;
+       width: 18px;
+       height: 18px;
+    }
+}

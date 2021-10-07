@@ -2,3 +2,10 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(min-content, max-content));
 }
+
+@media screen and (max-width: 767px) {
+    .profile__info {
+     display: flex;
+     flex-direction: column;
+    }
+}

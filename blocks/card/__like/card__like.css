@@ -1,6 +1,8 @@
 .card__like {
     cursor: pointer;
     transition: opacity 0.1s linear 0.1s;
+    width: 22px;
+    height: 19px;
 }
 
 .card__like:hover {

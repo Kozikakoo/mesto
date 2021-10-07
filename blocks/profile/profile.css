@@ -5,3 +5,13 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 767px) {
+    .profile {
+        width: calc(100%-38px);
+        margin-bottom: 36px;
+        flex-direction: column;
+        justify-content: none;
+        align-items: center;
+    }
+}
