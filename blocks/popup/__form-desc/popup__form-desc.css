@@ -1,0 +1,15 @@
+.popup__form-desc {
+    width: 100%;
+    border-bottom: 1px black solid;
+    height: 27px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.popup__form-desc::placeholder {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}

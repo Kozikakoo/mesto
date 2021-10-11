@@ -5,9 +5,9 @@
     min-height: 361px;
 }
 
-
 @media screen and (max-width: 767px) {
     .card {
        min-height: 361px;
+       max-width: 282px;
     }
 }

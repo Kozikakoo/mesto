@@ -6,13 +6,15 @@
     column-gap: 17px;
     margin: 0 auto;
     color: black;
+    justify-content: center;
 }
 
 @media screen and (max-width: 767px) {
     .cards {
-     display: flex;
-     flex-direction: column;
-     width: 88%;
-     margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 88%;
+        margin: 0 auto;
+        align-items: center;
     }
 }

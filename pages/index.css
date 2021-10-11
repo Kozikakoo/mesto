@@ -16,11 +16,22 @@
 @import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__container/profile__container.css);
 
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__form-name/popup__form-name.css);
+@import url(../blocks/popup/__form-desc/popup__form-desc.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/_is/popup_is_open.css);
 
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_heart/card__like_heart_full.css);
+@import url(../blocks/card/__like/_heart/card__like_heart_origin.css);
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__container/card__container.css);
 @import url(../blocks/card/__button/card__button.css);
