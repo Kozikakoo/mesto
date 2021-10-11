@@ -53,4 +53,4 @@ for (let i = 0; i < Like.length; i++) {
     Like[i].classList.toggle('card__like_heart_full')
     Like[i].classList.toggle('card__like_heart_origin')
   })
-}
+};
