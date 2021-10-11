@@ -45,8 +45,6 @@ function submitForm(event) {
 form.addEventListener('submit', submitForm);
 popupSave.addEventListener('click', submitForm);
 
-
-
 const Like = document.querySelectorAll('.card__like');
 
 for (let i = 0; i < Like.length; i++) {
