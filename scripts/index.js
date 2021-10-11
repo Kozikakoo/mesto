@@ -47,11 +47,10 @@ popupSave.addEventListener('click', submitForm);
 
 
 
-const buttonLike = document.querySelectorAll('.card__button');
 const Like = document.querySelectorAll('.card__like');
 
-for (let i = 0; i < buttonLike.length; i++) {
-  let self = buttonLike[i];
+for (let i = 0; i < Like.length; i++) {
+  let self = Like[i];
   self.addEventListener('click', function () {
     Like[i].classList.toggle('card__like_heart_full')
     Like[i].classList.toggle('card__like_heart_origin')
