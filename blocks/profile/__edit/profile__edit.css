@@ -10,6 +10,10 @@
     align-self: flex-end;
     transition: opacity 0.1s linear 0.1s;
     padding: 0;
+    background-image: url(../../../images/Buttonedit.svg);
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: center;
 }
 
 .profile__edit:hover {

@@ -3,6 +3,8 @@
     flex-direction: row;
     margin-top: 20px;
     margin-left: 21px;
-    margin-right: 20px;
+    margin-right: 23px;
+    margin-bottom: 25px;
     justify-content: space-between;
+    position: relative;
 }

@@ -1,13 +1,18 @@
-.popup__form-desc {
+.popup__form-field {
     width: 100%;
-    border-bottom: 1px black solid;
+    margin-bottom: 30px;
+    border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
     height: 27px;
     border-top: none;
     border-left: none;
     border-right: none;
 }
 
-.popup__form-desc::placeholder {
+.popup__form-field:last-child {
+    margin-bottom: 0;
+}
+
+.popup__form-field::placeholder {
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
