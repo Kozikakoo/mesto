@@ -5,6 +5,10 @@
     margin-top: 0;
     margin-bottom: 8px;
     align-self: flex-end;
+    text-overflow: ellipsis;
+    max-width: 294px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 @media screen and (max-width: 767px) {
@@ -16,5 +20,6 @@
         align-self: center;
         white-space: nowrap;
         margin-left: 20px;
+        max-width: 189px;
     }
 }
