@@ -4,15 +4,12 @@
     height: 19px;
     cursor: pointer;
     align-self: center;
-    margin: 0 0 0 20px;
+    margin: 0;
     background-size: cover;
     background-position: center;
     background-image: url(../../../images/Vector.svg);
     border: 0;
     background-color: white;
-    position: absolute;
-    right: 0;
-    bottom: 4px;
     padding: 0;
 }
 

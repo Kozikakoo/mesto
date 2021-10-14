@@ -3,7 +3,7 @@
     grid-template-columns: repeat(3, minmax(min-content, max-content));
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 946px) {
     .profile__info {
      display: flex;
      flex-direction: column;
