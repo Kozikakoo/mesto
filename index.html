@@ -46,11 +46,11 @@
         <p class="footer__text">&copy; 2020 Mesto Russia</p>
       </footer>
 
-      <div class="popup">
+      <div class="popup popup_edit">
         <div class="popup__content">
-          <button class="popup__close" type="button"></button>
+          <button class="popup__close popup__close_edit-profile" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="edit-profile">
+          <form class="popup__form popup__form_edit-profile" name="edit-profile">
             <input
               class="popup__form-field popup__form-field_name_person"
               type="text"
@@ -62,6 +62,28 @@
               type="text"
               name="description"
               placeholder="Исследователь океана"
+            />
+            <button class="popup__save" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_add">
+        <div class="popup__content">
+          <button class="popup__close popup__close_add-place" type="button"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form popup__form_add-place" name="add-place">
+            <input
+              class="popup__form-field popup__form-field_place_name"
+              type="text"
+              name="name"
+              placeholder="Название"
+            />
+            <input
+              class="popup__form-field popup__form-field_place_desc"
+              type="text"
+              name="description"
+              placeholder="Ссылка на картинку"
             />
             <button class="popup__save" type="submit">Сохранить</button>
           </form>

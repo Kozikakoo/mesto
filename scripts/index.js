@@ -1,40 +1,3 @@
-const popup = document.querySelector('.popup');
-const popupClose = document.querySelector('.popup__close');
-const editButton = document.querySelector('.profile__edit');
-const form = document.querySelector('.popup__form');
-let profileName = document.querySelector('.profile__name');
-let profileDesc = document.querySelector('.profile__desc')
-let popupPerson = document.querySelector('.popup__form-field_name_person');
-let popupDesc = document.querySelector('.popup__form-field_name_desc');
-
-function openPopup() {
-  popup.classList.add('popup_open')
-
-  popupPerson.value = profileName.textContent
-  popupDesc.value = profileDesc.textContent
-
-};
-
-function closePopup() {
-  popup.classList.remove('popup_open')
-};
-
-function submitForm(event) {
-  event.preventDefault();
-
-  profileName.textContent = popupPerson.value
-  profileDesc.textContent = popupDesc.value
-
-  closePopup();
-}
-
-
-editButton.addEventListener('click', openPopup);
-
-popupClose.addEventListener('click', closePopup);
-
-form.addEventListener('submit', submitForm);
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -78,4 +41,58 @@ function appendCard(item) {
   const element = createCard(item);
   cardsElement.append(element);
 }
+
+
+const popupEdit = document.querySelector('.popup_edit');
+const popupAdd = document.querySelector('.popup_add');
+const popupCloseEditProfile = document.querySelector('.popup__close_edit-profile');
+const popupCloseAddPlace = document.querySelector('.popup__close_add-place');
+const editButton = document.querySelector('.profile__edit');
+const addButton = document.querySelector('.profile__add')
+const Editform = document.querySelector('.popup__form_edit-profile');
+let profileName = document.querySelector('.profile__name');
+let profileDesc = document.querySelector('.profile__desc')
+let popupEditPerson = document.querySelector('.popup__form-field_name_person');
+let popupEditDesc = document.querySelector('.popup__form-field_name_desc');
+
+
+function openPopupEdit() {
+  popupEdit.classList.add('popup_open');
+  popupEditPerson.value = profileName.textContent;
+  popupEditDesc.value = profileDesc.textContent;
+}
+
+function openPopupAdd() {
+  popupAdd.classList.add('popup_open');
+}
+
+function closeAddPopup() {
+  popupAdd.classList.remove('popup_open');
+}
+
+function closeEditPopup() {
+  popupEdit.classList.remove('popup_open');
+}
+
+function submitFormEditPopup(event) {
+  event.preventDefault();
+
+  profileName.textContent = popupEditPerson.value;
+  profileDesc.textContent = popupEditDesc.value;
+
+  closeEditPopup();
+}
+
+
+
+editButton.addEventListener('click', openPopupEdit);
+
+addButton.addEventListener('click', openPopupAdd);
+
+popupCloseEditProfile.addEventListener('click', closeEditPopup);
+
+popupCloseAddPlace.addEventListener('click', closeAddPopup);
+
+Editform.addEventListener('submit', submitFormEditPopup);
+
 
