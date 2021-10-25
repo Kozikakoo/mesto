@@ -1,11 +1,10 @@
 .card__image {
-    width: 100%;
+    width: 282px;
     height: 282px;
-    object-fit: cover;
-}
-
-@media screen and (max-width: 767px) {
-    .card__image {
-        width: 282px;
-    }
+    background-size: cover;
+    background-position: center;
+    background-image: url(../../../images/Severnayaosetiya.jpg);
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
 }
