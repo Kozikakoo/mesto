@@ -17,4 +17,4 @@
 9. Часть логики написана на JavaScript. Реализуется диалоговое окно с возможностью редактирования данных на сайте.
 
 ## Project link
-https://kozikakoo.github.io/mesto/index.html
+ https://kozikakoo.github.io/mesto/index.html
