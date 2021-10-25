@@ -34,7 +34,7 @@ function createCard(item) {
   const element = templateItem.querySelector('.card').cloneNode(true);
   element.querySelector('.card__title').innerText = item.name;
   element.querySelector('.card__image').style.backgroundImage = `url(${item.link})`;
-  element.querySelector('.card__delete').addEventListener('click', (event) => { event.target.closest(".card").remove() });
+  element.querySelector('.card__delete').addEventListener('mouseup', (event) => { event.target.closest(".card").remove() });
   element.querySelector('.card__like').addEventListener('click', (event) => { event.target.classList.toggle('card__like_active') });
   element.querySelector('.card__image').addEventListener('click', (event) => {
     if (event.target.classList.contains('card__delete')) {
