@@ -75,7 +75,7 @@ const popupAddNamePlace = document.querySelector('.popup__form-field_place_name'
 const popupAddLinkPlace = document.querySelector('.popup__form-field_place_link');
 const addForm = document.querySelector('.popup__form_add-place');
 
-const popupCloseImage = document.querySelector('.popup__close_image');
+const popupCloseImage = document.querySelector('.popup-image__close');
 const popupImage = document.querySelector('.popup-image');
 
 function openPopupEdit() {
