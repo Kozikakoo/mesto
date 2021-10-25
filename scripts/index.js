@@ -36,10 +36,14 @@ function createCard(item) {
   element.querySelector('.card__image').style.backgroundImage = `url(${item.link})`;
   element.querySelector('.card__delete').addEventListener('click', (event) => { event.target.closest(".card").remove() });
   element.querySelector('.card__like').addEventListener('click', (event) => { event.target.classList.toggle('card__like_active') });
-  element.querySelector('.card__image').addEventListener('click', () => {
-    document.querySelector('.popup-image__img').src = item.link;
+  element.querySelector('.card__image').addEventListener('click', (event) => {
+    if (event.target.classList.contains('card__delete')) {
+      event.stopImmediatePropagation() 
+    }
+    else {document.querySelector('.popup-image__img').src = item.link;
     document.querySelector('.popup-image').classList.add('popup_open');
-    document.querySelector('.popup-image').classList.add('popup_transition');
+    document.querySelector('.popup-image').classList.add('popup_transition');}
+    
   })
   return element;
 }
