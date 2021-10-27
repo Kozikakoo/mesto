@@ -10,5 +10,6 @@
     align-items: center;
     opacity: 0;
     display: flex;
+    z-index: 2;
 }
 
