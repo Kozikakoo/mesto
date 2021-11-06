@@ -17,7 +17,7 @@ const addForm = document.querySelector('.popup__form_add-place');
 const popupCloseImage = document.querySelector('.popup__close_image');
 const popupImage = document.querySelector('.popup_image');
 
-
+const popupAll = document.querySelectorAll('.popup');
 
 function openPopup(popup) {
   popup.classList.add('popup_open');
@@ -38,8 +38,11 @@ function submitFormEditPopup(event) {
   profileName.textContent = popupEditPerson.value;
   profileDesc.textContent = popupEditDesc.value;
 
+ 
+
   closePopup(popupEdit);
 }
+
 
 function submitFormAddPopup(event) {
   event.preventDefault();
@@ -55,24 +58,41 @@ function submitFormAddPopup(event) {
   closePopup(popupAdd);
 }
 
-
-
 editButton.addEventListener('click', function () {
   openPopup(popupEdit);
   editPopupEdit();
+  setSubmitButtonState(editForm, config);
 })
 
-addButton.addEventListener('click', ()=> openPopup(popupAdd));
+addButton.addEventListener('click', () => openPopup(popupAdd));
 
-popupCloseEditProfile.addEventListener('click', ()=>closePopup(popupEdit));
+popupCloseEditProfile.addEventListener('click', () => closePopup(popupEdit));
 
-popupCloseAddPlace.addEventListener('click', ()=>closePopup(popupAdd));
+popupCloseAddPlace.addEventListener('click', () => closePopup(popupAdd));
 
-popupCloseImage.addEventListener('click', ()=>closePopup(popupImage));
+popupCloseImage.addEventListener('click', () => closePopup(popupImage));
 
 editForm.addEventListener('submit', submitFormEditPopup);
 
+
+
 addForm.addEventListener('submit', submitFormAddPopup);
+
+popupAll.forEach((element) => element.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    evt.target.classList.remove('popup_open');
+  }
+}));
+
+window.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    popupAll.forEach((element) => {
+      if (element.classList.contains('popup_open')) {
+        element.classList.remove('popup_open');
+      }
+    })
+  }
+})
 
 
 

@@ -56,19 +56,31 @@
           <form
             class="popup__form popup__form_edit-profile"
             name="edit-profile"
+            novalidate
           >
             <input
+              required
+              id="name-person"
+              minlength="3"
+              maxlength="40"
               class="popup__form-field popup__form-field_name_person"
               type="text"
               name="person"
               placeholder="Имя"
-            />
+            /><span
+              class="popup__form-field-error"
+              id="name-person-error"
+            ></span>
             <input
+              required
+              id="name-desc"
+              minlength="3"
+              maxlength="200"
               class="popup__form-field popup__form-field_name_desc"
               type="text"
               name="description"
               placeholder="Профессиональная деятельность"
-            />
+            /><span class="popup__form-field-error" id="name-desc-error"></span>
             <button class="popup__save" type="submit">Сохранить</button>
           </form>
         </div>
@@ -81,19 +93,35 @@
             type="button"
           ></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form popup__form_add-place" name="add-place">
+          <form
+            class="popup__form popup__form_add-place"
+            name="add-place"
+            novalidate
+          >
             <input
+              required
+              id="place-name"
+              minlength="2"
+              maxlength="30"
               class="popup__form-field popup__form-field_place_name"
               type="text"
               name="name"
               placeholder="Название"
-            />
+            /><span
+              class="popup__form-field-error"
+              id="place-name-error"
+            ></span>
             <input
+              required
+              id="place-link"
               class="popup__form-field popup__form-field_place_link"
-              type="text"
+              type="url"
               name="link"
               placeholder="Ссылка на картинку"
-            />
+            /><span
+              class="popup__form-field-error"
+              id="place-link-error"
+            ></span>
             <button class="popup__save" type="submit">Создать</button>
           </form>
         </div>
@@ -101,13 +129,12 @@
 
       <div class="popup popup_image popup_transition">
         <div class="popup__container">
-          <button class="popup__close popup__close_image" type="button"></button>
+          <button
+            class="popup__close popup__close_image"
+            type="button"
+          ></button>
           <figure class="popup__figure">
-            <img
-              class="popup__img"
-              src="#"
-              alt="Северная Осетия"
-            />
+            <img class="popup__img" src="#" alt="Северная Осетия" />
             <figcaption class="popup__sign">Cеверная Осетия</figcaption>
           </figure>
         </div>
@@ -133,5 +160,6 @@
       </div>
     </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
