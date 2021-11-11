@@ -19,15 +19,23 @@ const popupImage = document.querySelector('.popup_image');
 
 const popupList = document.querySelectorAll('.popup');
 
+function closePopupByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_open');
+    closePopup(popupOpened);
+    console.log('yes');
+  }
+}
+
+function fix() {
+
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_open');
-  window.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      popup.classList.remove('popup_open');
-    }
-  })
+  window.addEventListener('keydown', closePopupByEsc);
   }
-
+  
 function fillInEditProfilePopupFields() {
   popupEditPerson.value = profileName.textContent;
   popupEditDesc.value = profileDesc.textContent;
@@ -40,12 +48,8 @@ function fillInAddCardPopupFields() {
 
 function closePopup(popup) {
   popup.classList.remove('popup_open');
-  window.removeEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      popup.classList.remove('popup_open');
-    }
-  })
-}
+  window.removeEventListener('keydown', closePopupByEsc);
+  }
 
 function submitFormEditPopup(event) {
   event.preventDefault();
@@ -74,8 +78,8 @@ editButton.addEventListener('click', function () {
   openPopup(popupEdit);
   fillInEditProfilePopupFields();
 
-  const editFields = [...editForm.querySelectorAll('.popup__form-field')];
-  editFields.forEach((editField) => { handleFieldValidation(editField, editForm, config); })
+  /* Функция для очистки полей??? подумаю потом  const editFields = [...editForm.querySelectorAll('.popup__form-field')];
+  editFields.forEach((editField) => { handleFieldValidation(editField, editForm, config); }) */
 
   setSubmitButtonState(editForm, config);
 })
