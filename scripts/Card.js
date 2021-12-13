@@ -1,12 +1,16 @@
 class Card {
-    constructor(text, image, openPopup) {
+    constructor(text, image, openPopup, cardSelector) {
         this._text = text;
         this._image = image;
         this._openPopup = openPopup;
+        this._cardSelector = cardSelector;
     }
 
     _getTemplate() {
-        const cardElement = document.querySelector('.template').content.querySelector('.card').cloneNode(true);
+        const cardElement = document
+        .querySelector(this._cardSelector)
+        .content.querySelector('.card').
+        cloneNode(true);
 
         return cardElement;
     }
@@ -45,12 +49,11 @@ class Card {
         const popupSign = document.querySelector('.popup__sign');
 
         this._openPopup(popupImage);
-       
+
         popupImg.src = this._image;
         popupImg.alt = this._text;
         popupSign.textContent = this._text;
     }
 }
-
 
 export default Card;
