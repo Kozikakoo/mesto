@@ -14,7 +14,6 @@ const popupEditDesc = document.querySelector('.popup__form-field_name_desc');
 const popupAddNamePlace = document.querySelector('.popup__form-field_place_name');
 const popupAddLinkPlace = document.querySelector('.popup__form-field_place_link');
 const addForm = document.querySelector('.popup__form_add-place');
-const spanError = document.querySelectorAll('.popup__form-field-error');
 
 const popupList = document.querySelectorAll('.popup');
 
