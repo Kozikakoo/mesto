@@ -1,3 +1,6 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupCloseEditProfile = document.querySelector('.popup__close_edit-profile');
@@ -18,6 +21,14 @@ const popupCloseImage = document.querySelector('.popup__close_image');
 const popupImage = document.querySelector('.popup_image');
 
 const popupList = document.querySelectorAll('.popup');
+
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__form-field',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__form-field_type_error',
+};
 
 function closePopupByEsc(evt) {
   if (evt.key === 'Escape') {
@@ -85,15 +96,17 @@ editButton.addEventListener('click', function () {
   /* Функция для очистки полей??? подумаю потом  const editFields = [...editForm.querySelectorAll('.popup__form-field')];
   editFields.forEach((editField) => { handleFieldValidation(editField, editForm, config); }) */
 
-  setSubmitButtonState(editForm, config);
+  const formValidator = new FormValidator(config, editForm);
+  formValidator.enableValidation();
 })
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
   fillInAddCardPopupFields();
 
-  setSubmitButtonState(addForm, config);
-});
+  const formValidator = new FormValidator(config, addForm);
+  formValidator.enableValidation();
+}); 
 
 popupCloseEditProfile.addEventListener('click', () => {
   closePopup(popupEdit);
@@ -139,8 +152,6 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-import Card from "./Card.js";
 
 initialCards.forEach((item) => {
 const card = new Card(item.name, item.link, openPopup);
