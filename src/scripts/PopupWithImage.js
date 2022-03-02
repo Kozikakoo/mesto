@@ -16,7 +16,6 @@ class PopupWithImage extends Popup {
         popupImg.alt = item.name;
         popupSign.textContent = item.name;
     }
-
 }
 
 export default PopupWithImage;

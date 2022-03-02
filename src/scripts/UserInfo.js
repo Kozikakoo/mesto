@@ -1,21 +1,19 @@
-import { profileName, profileDesc } from "../utils/constants"
-
 class UserInfo {
     constructor({ userName, userInfo }) {
         this._userName = userName;
         this._userInfo = userInfo;
     }
 
-    getUserInfo() {
-        return {
-            userName: this._userName,
-            userInfo: this._userInfo
+    getUserInfo(nameValue, infoValue) {
+        return { 
+            nameValue,
+            infoValue
         }
     }
 
     setUserInfo(nameValue, infoValue) {
-        profileName.textContent = nameValue;
-        profileDesc.textContent = infoValue;
+        this._userName.textContent = nameValue;
+        this._userInfo.textContent = infoValue;
     }
 }
 

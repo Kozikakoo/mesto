@@ -12,7 +12,6 @@ class Card {
             .querySelector('.card').
             cloneNode(true);
 
-
         return cardElement;
     }
 
@@ -34,7 +33,6 @@ class Card {
         this._element.querySelector('.card__image').addEventListener('click', () => {
             this._handleCardClick();
         })
-
     }
 
     _handleLikeClick() {
