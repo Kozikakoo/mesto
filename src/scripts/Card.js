@@ -1,16 +1,17 @@
 class Card {
-    constructor(text, image, openPopup, cardSelector) {
-        this._text = text;
-        this._image = image;
-        this._openPopup = openPopup;
+    constructor({ items, handleCardClick }, cardSelector) {
+        this._initialArray = items;
+        this._handleCardClick = handleCardClick;
         this._cardSelector = cardSelector;
     }
 
     _getTemplate() {
         const cardElement = document
-        .querySelector(this._cardSelector)
-        .content.querySelector('.card').
-        cloneNode(true);
+            .querySelector(this._cardSelector)
+            .content
+            .querySelector('.card').
+            cloneNode(true);
+
 
         return cardElement;
     }
@@ -19,8 +20,8 @@ class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
 
-        this._element.querySelector('.card__title').textContent = this._text;
-        this._element.querySelector('.card__image').style.backgroundImage = `url(${this._image})`;
+        this._element.querySelector('.card__title').textContent = this._initialArray.name;
+        this._element.querySelector('.card__image').style.backgroundImage = `url(${this._initialArray.link})`;
 
         return this._element;
     }
@@ -31,8 +32,9 @@ class Card {
         })
         this._element.querySelector('.card__delete').addEventListener('mouseup', () => { this._handleDeleteClick(); })
         this._element.querySelector('.card__image').addEventListener('click', () => {
-            this._handleImageClick();
+            this._handleCardClick();
         })
+
     }
 
     _handleLikeClick() {
@@ -42,18 +44,7 @@ class Card {
     _handleDeleteClick() {
         this._element.querySelector('.card__delete').closest(".card").remove();
     }
-
-    _handleImageClick() {
-        const popupImage = document.querySelector('.popup_image');
-        const popupImg = document.querySelector('.popup__img');
-        const popupSign = document.querySelector('.popup__sign');
-
-        this._openPopup(popupImage);
-
-        popupImg.src = this._image;
-        popupImg.alt = this._text;
-        popupSign.textContent = this._text;
-    }
 }
+
 
 export default Card;

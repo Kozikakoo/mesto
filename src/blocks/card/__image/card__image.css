@@ -5,7 +5,7 @@
     background-position: center;
     background-image: url(../../../images/Severnayaosetiya.jpg);
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     cursor: pointer;
     position: relative;
     z-index: 0;
