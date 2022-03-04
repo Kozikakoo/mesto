@@ -11,9 +11,9 @@ class PopupWithForm extends Popup {
         const res = {};
 
         for (let i = 0; i <= inputs.length; i++) {
-            let g = inputs[i];
-            let nameInput = g.value;
-            let valueInput = g.name;
+            let input = inputs[i];
+            let nameInput = input.value;
+            let valueInput = input.name;
             res[valueInput] = nameInput
         }
         return res
