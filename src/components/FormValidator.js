@@ -10,31 +10,33 @@ class FormValidator {
     }
 
     enableValidation() { //может нужен config
-        const forms = [...document.querySelectorAll(this._forms)];
-        forms.forEach(() => this._setFormListeners(this._formElement, this._сonfig));
+        this._setFormListeners();
+    }
+
+    resetValidation() {
+        this._setSubmitButtonState();
     }
 
     _setFormListeners() {
-        this._formElement.addEventListener('submit', () => this._handleSubmit);
-        this._formElement.addEventListener('input', () => this._setSubmitButtonState(this._formElement, this._config));
+        this._formElement.addEventListener('submit', (evt) => this._handleSubmit(evt));
+        this._formElement.addEventListener('input', () => this._setSubmitButtonState());
 
         const inputs = [...this._formElement.querySelectorAll(this._inputSelector)];
+        this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
 
         inputs.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                this._handleFieldValidation(inputElement, this._formElement, this._config);
+                this._handleFieldValidation(inputElement);
             })
         })
-        this._setSubmitButtonState(this._formElement, this._config);
+        this._setSubmitButtonState();
     }
 
     _setSubmitButtonState() {
-        const buttons = [...this._formElement.querySelectorAll(this._submitButtonSelector)];
-        buttons.forEach((button) => {
-            button.disabled = !this._formElement.checkValidity();
-            button.classList.toggle(this._inactiveButtonClass, !this._formElement.checkValidity());
-        })
+        this._submitButton.disabled = !this._formElement.checkValidity();
+        this._submitButton.classList.toggle(this._inactiveButtonClass, !this._formElement.checkValidity());
     }
+
 
     _handleSubmit(event) {
         event.preventDefault();
@@ -42,10 +44,10 @@ class FormValidator {
 
     _handleFieldValidation(inputElement) {
         if (!inputElement.validity.valid) {
-            this._showError(inputElement, this._formElement, this._config);
+            this._showError(inputElement);
             // показывать ошибку
         } else {
-            this._hideError(inputElement, this._formElement, this._config);
+            this._hideError(inputElement);
             // скрывать
         }
     }

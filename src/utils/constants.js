@@ -33,20 +33,10 @@ export const initialCards = [
   }
 ];
 
-export const popupEdit = document.querySelector('.popup_edit');
-export const popupAdd = document.querySelector('.popup_add');
 export const editButton = document.querySelector('.profile__edit');
 export const addButton = document.querySelector('.profile__add');
-export const editForm = document.querySelector('.popup__form_edit-profile');
-export const profileName = document.querySelector('.profile__name');
-export const profileDesc = document.querySelector('.profile__desc');
 export const popupEditPerson = document.querySelector('.popup__form-field_name_person');
 export const popupEditDesc = document.querySelector('.popup__form-field_name_desc');
-export const popupImage = document.querySelector('.popup_image');
-
-export const popupAddNamePlace = document.querySelector('.popup__form-field_place_name');
-export const popupAddLinkPlace = document.querySelector('.popup__form-field_place_link');
-export const addForm = document.querySelector('.popup__form_add-place');
 
 export const cardsElement = document.querySelector('.cards');
 

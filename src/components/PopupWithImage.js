@@ -6,7 +6,7 @@ class PopupWithImage extends Popup {
     }
 
     openPopup(item) {
-        this._popupSelector.classList.add('popup_open');
+        this._popup.classList.add('popup_open');
         window.addEventListener('keydown', this._handleEscClose);
 
         const popupImg = document.querySelector('.popup__img');
