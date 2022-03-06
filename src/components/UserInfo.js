@@ -17,8 +17,9 @@ class UserInfo {
     }
 
     fillUserInfo(nameInput, infoInput) {
-        nameInput.value = this.getUserInfo().nameValue;
-        infoInput.value = this.getUserInfo().infoValue;
+        const {nameValue, infoValue} = this.getUserInfo()
+        nameInput.value = nameValue;
+        infoInput.value = infoValue;
     }
 }
 

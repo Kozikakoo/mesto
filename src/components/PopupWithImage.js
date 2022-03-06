@@ -3,18 +3,16 @@ import Popup from "./Popup";
 class PopupWithImage extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
+        this._popupImg = this._popup.querySelector('.popup__img');
+        this._popupSign = this._popup.querySelector('.popup__sign');
     }
 
     openPopup(item) {
-        this._popup.classList.add('popup_open');
-        window.addEventListener('keydown', this._handleEscClose);
+        super.openPopup();
 
-        const popupImg = document.querySelector('.popup__img');
-        const popupSign = document.querySelector('.popup__sign');
-
-        popupImg.src = item.link;
-        popupImg.alt = item.name;
-        popupSign.textContent = item.name;
+        this._popupImg.src = item.link;
+        this._popupImg.alt = item.name;
+        this._popupSign.textContent = item.name;
     }
 }
 

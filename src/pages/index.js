@@ -7,7 +7,6 @@ import PopupWithForm from '../components/PopupWithForm';
 import {
   config,
   initialCards,
-  cardsElement,
   editButton,
   addButton,
   popupEditPerson,
@@ -59,7 +58,7 @@ const cardsList = new Section({
     cardsList.addItem(createCard(item));
   },
 },
-  cardsElement
+  ".cards"
 );
 
 editButton.addEventListener('click', function () {

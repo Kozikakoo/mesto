@@ -24,7 +24,7 @@ class Card {
         this._setEventListeners();
 
         this._element.querySelector('.card__title').textContent = this._initialArray.name;
-        this._element.querySelector('.card__image').style.backgroundImage = `url(${this._initialArray.link})`;
+        this._cardImage.style.backgroundImage = `url(${this._initialArray.link})`;
 
         return this._element;
     }
