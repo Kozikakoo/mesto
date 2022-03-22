@@ -9,17 +9,72 @@ import {
   initialCards,
   editButton,
   addButton,
+  profileImage,
   popupEditPerson,
-  popupEditDesc,
+  popupEditDesc
 } from '../utils/constants.js';
 import UserInfo from '../components/UserInfo';
+import { api } from '../components/Api.js';
 
+let userId;
+
+api.getProfile()
+  .then(res => {
+    userInfo.setUserInfo(res)
+    userId = res._id
+  }
+  )
+
+api.getCards()
+  .then(data =>
+    data.forEach(card => {
+      cardsList.addItem(createCard({
+        name: card.name,
+        link: card.link,
+        likes: card.likes,
+        id: card._id,
+        userId: userId,
+        ownerId: card.owner._id
+      }))
+    }))
+
+function renderLoading(isLoading) {
+  const buttonSave = document.querySelector(config.submitButtonSelector);
+  if (isLoading) {
+    buttonSave.textContent = 'Сохранение...'
+  }
+}
 
 function createCard(cardItem) {
   const card = new Card({
     items: cardItem,
     handleCardClick: () => {
       popupWithImage.openPopup(cardItem);
+    },
+    handleDeleteCard: (id) => {
+      popupConfirm.openPopup();
+      popupConfirm.changeSubmitHandler(() => {
+        api.deleteCard(id)
+          .then(res => {
+            card.deleteCard()
+          })
+      });
+    },
+    handleLikeIcon: (id) => {
+      if (card.isLiked()) {
+        api.deleteLike(id)
+          .then((res) => {
+            card.setLikes(res.likes)
+          })
+      }
+      else {
+        api.addLike(id)
+          .then((res) => {
+            card.setLikes(res.likes)
+          })
+      }
+
+
     }
   }, '.template');
   const cardElement = card.generateCard();
@@ -31,35 +86,73 @@ const popupWithImage = new PopupWithImage('.popup_image', initialCards);
 const popupWithFormAdd = new PopupWithForm('.popup_add', {
   submitForm: (formData) => {
     //sozdanie karti
-    const item = {
-      name: formData.name,
-      link: formData.link
-    }
-    cardsList.prependItem(createCard(item));
-
+    renderLoading(true);
+    api.addCard(formData.name, formData.link)
+      .then(res => {
+        const item = {
+          name: res.name,
+          link: res.link,
+          likes: res.likes,
+          id: res._id,
+          userId: userId,
+          ownerId: res.owner._id
+        }
+        cardsList.prependItem(createCard(item));
+      }
+      )
+      .finally(() => {
+        renderLoading(false);
+      })
   }
 });
 
 const userInfo = new UserInfo({
   userName: '.profile__name',
-  userInfo: '.profile__desc'
+  userInfo: '.profile__desc',
+  userAvatar: '.profile__image'
 });
 
 const popupWithFormEdit = new PopupWithForm('.popup_edit', {
   submitForm: (formData) => {
-    userInfo.setUserInfo(formData.person, formData.description);
+    renderLoading(true);
+    api.editProfile(formData.person, formData.description)
+      .then((res) => { userInfo.setUserInfo(res); })
+      .finally(() => {
+        renderLoading(false);
+      })
   }
 }
 );
 
 const cardsList = new Section({
-  items: initialCards,
+  items: [],
   renderer: (item) => {
     cardsList.addItem(createCard(item));
   },
 },
   ".cards"
 );
+
+const popupConfirm = new PopupWithForm('.popup_delete-confirm', {
+  submitForm: () => {
+    api.deleteCard();
+  }
+});
+
+const popupAvatar = new PopupWithForm('.popup_edit-avatar', {
+  submitForm: (formData) => {
+    const { link } = formData;
+    renderLoading(true);
+    api.editAvatar(link)
+      .then((res) => {
+        userInfo.setUserInfo(res);
+      })
+      .finally(() => {
+        renderLoading(false);
+      })
+  }
+});
+
 
 editButton.addEventListener('click', function () {
   popupWithFormEdit.openPopup();
@@ -70,6 +163,11 @@ editButton.addEventListener('click', function () {
 addButton.addEventListener('click', () => {
   popupWithFormAdd.openPopup();
   formValidators['add-place'].resetValidation();
+});
+
+profileImage.addEventListener('click', () => {
+  popupAvatar.openPopup();
+  formValidators['popupAvatar'].resetValidation();
 });
 
 const formValidators = {}
@@ -92,6 +190,8 @@ cardsList.renderItems();
 popupWithImage.setEventListeners();
 popupWithFormAdd.setEventListeners();
 popupWithFormEdit.setEventListeners();
+popupConfirm.setEventListeners();
+popupAvatar.setEventListeners();
 
 
 

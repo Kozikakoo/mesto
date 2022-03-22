@@ -37,5 +37,6 @@ export const editButton = document.querySelector('.profile__edit');
 export const addButton = document.querySelector('.profile__add');
 export const popupEditPerson = document.querySelector('.popup__form-field_name_person');
 export const popupEditDesc = document.querySelector('.popup__form-field_name_desc');
+export const profileImage = document.querySelector('.profile__image');
 
 

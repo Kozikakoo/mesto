@@ -19,6 +19,10 @@ class PopupWithForm extends Popup {
         return this._formValues;
     }
 
+    changeSubmitHandler(newSubmitForm) {
+        this._submitForm = newSubmitForm
+    }
+
     setEventListeners() {
         super.setEventListeners();
         this._popup.addEventListener('submit', (evt) => {
@@ -30,7 +34,7 @@ class PopupWithForm extends Popup {
 
     closePopup() {
         super.closePopup();
-        
+
         this._form.reset();
     }
 }

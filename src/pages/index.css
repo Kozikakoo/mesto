@@ -34,11 +34,14 @@
 @import url(../blocks/popup/__sign/popup__sign.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/_open/popup_open.css);
+@import url(../blocks/popup/__save/_delete-confirm/popup__save_delete-confirm.css);
+@import url(../blocks/popup/__title/_delete-confirm/popup__title_delete-confirm.css);
 
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/card__like-count.css);
 @import url(../blocks/card/__like/_active/card__like_active.css);
 @import url(../blocks/card/__delete/card__delete.css);
 @import url(../blocks/card/__image/card__image.css);

@@ -1,25 +1,28 @@
 class UserInfo {
-    constructor({ userName, userInfo }) {
+    constructor({ userName, userInfo, userAvatar }) {
         this._userName = document.querySelector(userName);
         this._userInfo = document.querySelector(userInfo);
+        this._userAvatar = document.querySelector(userAvatar);
     }
 
     getUserInfo() {
         return {
-            nameValue: this._userName.textContent,
-            infoValue: this._userInfo.textContent
+            name: this._userName.textContent,
+            about: this._userInfo.textContent
         }
     }
 
-    setUserInfo(nameValue, infoValue) {
-        this._userName.textContent = nameValue;
-        this._userInfo.textContent = infoValue;
+    setUserInfo({name, about, avatar}) {
+        this._userName.textContent = name;
+        this._userInfo.textContent = about;
+        this._userAvatar.src = avatar;
+        console.log(avatar);
     }
 
     fillUserInfo(nameInput, infoInput) {
-        const {nameValue, infoValue} = this.getUserInfo()
-        nameInput.value = nameValue;
-        infoInput.value = infoValue;
+        const {name, about} = this.getUserInfo()
+        nameInput.value = name;
+        infoInput.value = about;
     }
 }
 
