@@ -19,11 +19,13 @@
       <main class="content">
         <section class="profile">
           <div class="profile__info">
-            <img
-              class="profile__image"
-              src="<%=require('./images/Avatar.jpg')%>"
-              alt="Аватар пользователя"
-            />
+            <div class="profile__overlay">
+              <img
+                class="profile__image"
+                src="<%=require('./images/Avatar.jpg')%>"
+                alt="Аватар пользователя"
+              />
+            </div>
             <div class="profile__container">
               <h1 class="profile__name"></h1>
               <button
@@ -84,7 +86,9 @@
               name="description"
               placeholder="Профессиональная деятельность"
             /><span class="popup__form-field-error" id="name-desc-error"></span>
-            <button class="popup__save" type="submit">Сохранить</button>
+            <button class="popup__save popup__save-edit" type="submit">
+              Сохранить
+            </button>
           </form>
         </div>
       </div>
@@ -125,7 +129,9 @@
               class="popup__form-field-error"
               id="place-link-error"
             ></span>
-            <button class="popup__save" type="submit">Создать</button>
+            <button class="popup__save popup__save-add" type="submit">
+              Создать
+            </button>
           </form>
         </div>
       </div>
@@ -134,7 +140,7 @@
         <div class="popup__content">
           <button class="popup__close" type="button"></button>
           <h2 class="popup__title popup__title_delete-confirm">Вы уверены?</h2>
-          <form class="popup__form" name="popupConfirms" novalidate>
+          <form class="popup__form" name="popupConfirm" novalidate>
             <button
               class="popup__save popup__save_delete-confirm"
               type="submit"
@@ -161,7 +167,9 @@
               class="popup__form-field-error"
               id="avatar-link-error"
             ></span>
-            <button class="popup__save" type="submit">Сохранить</button>
+            <button class="popup__save popup__save-avatar" type="submit">
+              Сохранить
+            </button>
           </form>
         </div>
       </div>

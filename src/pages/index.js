@@ -18,16 +18,11 @@ import { api } from '../components/Api.js';
 
 let userId;
 
-api.getProfile()
-  .then(res => {
-    userInfo.setUserInfo(res)
-    userId = res._id
-  }
-  )
-
-api.getCards()
-  .then(data =>
-    data.forEach(card => {
+Promise.all([api.getProfile(), api.getCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData)
+    userId = userData._id
+    cards.forEach(card => {
       cardsList.addItem(createCard({
         name: card.name,
         link: card.link,
@@ -36,14 +31,11 @@ api.getCards()
         userId: userId,
         ownerId: card.owner._id
       }))
-    }))
-
-function renderLoading(isLoading) {
-  const buttonSave = document.querySelector(config.submitButtonSelector);
-  if (isLoading) {
-    buttonSave.textContent = 'Сохранение...'
-  }
-}
+    })
+  })
+  .catch(err => {
+    console.log(err)
+  });
 
 function createCard(cardItem) {
   const card = new Card({
@@ -58,6 +50,7 @@ function createCard(cardItem) {
           .then(res => {
             card.deleteCard()
           })
+          .catch(console.log)
       });
     },
     handleLikeIcon: (id) => {
@@ -66,12 +59,14 @@ function createCard(cardItem) {
           .then((res) => {
             card.setLikes(res.likes)
           })
+          .catch(console.log)
       }
       else {
         api.addLike(id)
           .then((res) => {
             card.setLikes(res.likes)
           })
+          .catch(console.log)
       }
 
 
@@ -86,7 +81,7 @@ const popupWithImage = new PopupWithImage('.popup_image', initialCards);
 const popupWithFormAdd = new PopupWithForm('.popup_add', {
   submitForm: (formData) => {
     //sozdanie karti
-    renderLoading(true);
+    popupWithFormAdd.renderLoading(true, '.popup__save-add');
     api.addCard(formData.name, formData.link)
       .then(res => {
         const item = {
@@ -100,9 +95,11 @@ const popupWithFormAdd = new PopupWithForm('.popup_add', {
         cardsList.prependItem(createCard(item));
       }
       )
+      .catch(console.log)
       .finally(() => {
-        renderLoading(false);
+        popupWithFormAdd.renderLoading(false, '.popup__save-add');
       })
+    popupWithFormAdd.closePopup();
   }
 });
 
@@ -114,12 +111,14 @@ const userInfo = new UserInfo({
 
 const popupWithFormEdit = new PopupWithForm('.popup_edit', {
   submitForm: (formData) => {
-    renderLoading(true);
+    popupWithFormEdit.renderLoading(true, '.popup__save-edit');
     api.editProfile(formData.person, formData.description)
       .then((res) => { userInfo.setUserInfo(res); })
+      .catch(console.log)
       .finally(() => {
-        renderLoading(false);
+        popupWithFormEdit.renderLoading(false, '.popup__save-edit');
       })
+    popupWithFormEdit.closePopup();
   }
 }
 );
@@ -135,24 +134,28 @@ const cardsList = new Section({
 
 const popupConfirm = new PopupWithForm('.popup_delete-confirm', {
   submitForm: () => {
-    api.deleteCard();
+    api.deleteCard()
+      .catch(console.log)
+    popupConfirm.closePopup()
+
   }
 });
 
 const popupAvatar = new PopupWithForm('.popup_edit-avatar', {
   submitForm: (formData) => {
     const { link } = formData;
-    renderLoading(true);
+    popupAvatar.renderLoading(true, '.popup__save-avatar');
     api.editAvatar(link)
       .then((res) => {
         userInfo.setUserInfo(res);
       })
+      .catch(console.log)
       .finally(() => {
-        renderLoading(false);
+        popupAvatar.renderLoading(false, '.popup__save-avatar');
       })
+    popupAvatar.closePopup();
   }
 });
-
 
 editButton.addEventListener('click', function () {
   popupWithFormEdit.openPopup();

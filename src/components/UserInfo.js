@@ -16,7 +16,6 @@ class UserInfo {
         this._userName.textContent = name;
         this._userInfo.textContent = about;
         this._userAvatar.src = avatar;
-        console.log(avatar);
     }
 
     fillUserInfo(nameInput, infoInput) {

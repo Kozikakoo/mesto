@@ -28,9 +28,24 @@ class PopupWithForm extends Popup {
         this._popup.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._submitForm(this._getInputValues());
-            this.closePopup();
         })
     }
+
+    renderLoading(isLoading, SelectorButton) {
+        const buttonSave = document.querySelector(SelectorButton);
+        if (isLoading) {
+          buttonSave.textContent = "Сохранить..."
+        }
+        else {
+            switch (SelectorButton) {
+                case ".popup__save-add":
+                    buttonSave.textContent = "Создать"
+                case ".popup__save-edit":
+                    buttonSave.textContent = "Сохранить"
+                case ".popup__save-avatar":
+                    buttonSave.textContent = "Сохранить"
+            }
+        }}
 
     closePopup() {
         super.closePopup();
