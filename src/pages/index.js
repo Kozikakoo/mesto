@@ -49,6 +49,7 @@ function createCard(cardItem) {
         api.deleteCard(id)
           .then(res => {
             card.deleteCard()
+            popupConfirm.closePopup()
           })
           .catch(console.log)
       });
@@ -98,8 +99,9 @@ const popupWithFormAdd = new PopupWithForm('.popup_add', {
       .catch(console.log)
       .finally(() => {
         popupWithFormAdd.renderLoading(false, '.popup__save-add');
+        popupWithFormAdd.closePopup();
       })
-    popupWithFormAdd.closePopup();
+
   }
 });
 
@@ -117,8 +119,9 @@ const popupWithFormEdit = new PopupWithForm('.popup_edit', {
       .catch(console.log)
       .finally(() => {
         popupWithFormEdit.renderLoading(false, '.popup__save-edit');
+        popupWithFormEdit.closePopup();
       })
-    popupWithFormEdit.closePopup();
+
   }
 }
 );
@@ -133,13 +136,9 @@ const cardsList = new Section({
 );
 
 const popupConfirm = new PopupWithForm('.popup_delete-confirm', {
-  submitForm: () => {
-    api.deleteCard()
-      .catch(console.log)
-    popupConfirm.closePopup()
-
-  }
-});
+  submitForm: (formData) =>console.log(formData)
+}
+)
 
 const popupAvatar = new PopupWithForm('.popup_edit-avatar', {
   submitForm: (formData) => {
@@ -152,8 +151,9 @@ const popupAvatar = new PopupWithForm('.popup_edit-avatar', {
       .catch(console.log)
       .finally(() => {
         popupAvatar.renderLoading(false, '.popup__save-avatar');
+        popupAvatar.closePopup();
       })
-    popupAvatar.closePopup();
+
   }
 });
 
