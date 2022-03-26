@@ -94,12 +94,12 @@ const popupWithFormAdd = new PopupWithForm('.popup_add', {
           ownerId: res.owner._id
         }
         cardsList.prependItem(createCard(item));
+        popupWithFormAdd.closePopup();
       }
       )
       .catch(console.log)
       .finally(() => {
         popupWithFormAdd.renderLoading(false, '.popup__save-add');
-        popupWithFormAdd.closePopup();
       })
 
   }
@@ -115,11 +115,13 @@ const popupWithFormEdit = new PopupWithForm('.popup_edit', {
   submitForm: (formData) => {
     popupWithFormEdit.renderLoading(true, '.popup__save-edit');
     api.editProfile(formData.person, formData.description)
-      .then((res) => { userInfo.setUserInfo(res); })
+      .then((res) => {
+        userInfo.setUserInfo(res);
+        popupWithFormEdit.closePopup();
+      })
       .catch(console.log)
       .finally(() => {
         popupWithFormEdit.renderLoading(false, '.popup__save-edit');
-        popupWithFormEdit.closePopup();
       })
 
   }
@@ -136,7 +138,7 @@ const cardsList = new Section({
 );
 
 const popupConfirm = new PopupWithForm('.popup_delete-confirm', {
-  submitForm: (formData) =>console.log(formData)
+  submitForm: (formData) => console.log(formData)
 }
 )
 
@@ -147,11 +149,11 @@ const popupAvatar = new PopupWithForm('.popup_edit-avatar', {
     api.editAvatar(link)
       .then((res) => {
         userInfo.setUserInfo(res);
+        popupAvatar.closePopup();
       })
       .catch(console.log)
       .finally(() => {
         popupAvatar.renderLoading(false, '.popup__save-avatar');
-        popupAvatar.closePopup();
       })
 
   }
